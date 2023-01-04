@@ -10,11 +10,11 @@
                 </ul>
 
                 <div class="table-collection">
-                    <ul class="flex table-row row-collection">
-                        <li>{{props.unpopularCharacter.name}}</li>
-                        <li>{{props.unpopularCharacter.origin.name}}</li>
-                        <li>{{props.unpopularCharacter.location.name}}</li>
-                        <li>{{props.unpopularCharacter.episode.length}}</li>
+                    <ul class="flex table-row row-collection" v-for="({name,origin,location,episode}, index) in unpopularCharacter" :key="index">
+                        <li>{{name}}</li>
+                        <li>{{origin.name}}</li>
+                        <li>{{location.name}}</li>
+                        <li>{{episode.length}}</li>
                     </ul>
                 </div>
             </div>        
@@ -61,7 +61,7 @@
             .row-collection{
                 transition: 0.2s;
 
-                &:nth-child(2){
+                &:first-of-type{
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
                 }

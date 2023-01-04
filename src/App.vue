@@ -38,13 +38,11 @@
       // const filterByOrigin = data.filter( ({origin}) => origin.name.includes(selectedOrigin) );
       const lowestEpisodes = Math.min(...filterByOrigin.map(({episode}) => episode.length));
       const unpopularCharacter = filterByOrigin.filter( ({episode}) => episode.length === lowestEpisodes )
-      console.log('unpopularCharacter', unpopularCharacter)
-      list.unpopularCharacter = unpopularCharacter[0];
+      list.unpopularCharacter = unpopularCharacter;
       list.show = true;
   }
 
   function setPopularity(allCharacters) {
-    //console.log(allCharacters)
     const characters = [
       {
         name: "Rick Sanchez",
@@ -81,7 +79,6 @@
       return filtered;
     }, []);
 
-    //console.log( reduced )
     barChart.characters = reduced;
   }
 
@@ -95,7 +92,6 @@
             
             if( counter > total ){
                 getData( `${baseURL}/character/[${arr}]`).then((data) => {
-                    //console.log('all characters data', data)
                     characters.data = data;
                     setUnpopularCharacter(data);
                     setPopularity(data);
@@ -116,7 +112,6 @@
 
     function initCharacters(url) {
         getData(url).then((data) => {
-            //console.log('data', data)
             getAllCharacters(data)
         }); 
     }
